@@ -1,24 +1,27 @@
 <?php
 
-$dsn        = ''; 
-$user       = '';   
-$password   = ''; 
+require_once('/database.php');
 
 class dao{
     public $pdo = null;
 
-    function __construct(){
-        $pdo = new PDO(
-            $dsn, 
-            $user, 
-            $password,
-            array(
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-            )
-        );
+    function __construct($pdo){
+        $this->$pdo = $pdo;
     }
 
-    function select(){
+    function addTask($user_id,$taskName,$taskType){
+        $this->$pdo->prepare();
+    }
+
+    function getTasks($user_id){
+        $this->$pdo->prepare();
+    }
+
+    function updateTask($user_id,$task_id){
+        $this->$pdo->prepare();
+    }
+
+    function deleteTask($user_id,$task_id){
         $this->$pdo->prepare();
     }
 }
