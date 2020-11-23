@@ -27,13 +27,12 @@ $pdo = new PDO(
 $dao = new dao($pdo);
 
 try{
+    $taskList = $dao->getTasks();
 
-    $taslList = $dao->getTasks();
-
-    return json_encode($taslList);
+    return json_encode($taskList);
 }
 catch(PDOException $e){
-    
+
 }
 
 
