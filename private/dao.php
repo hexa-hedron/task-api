@@ -36,7 +36,7 @@ class dao{
         $sql->bindValue(1, $task_id, PDO::PARAM_INT);
         $sql->execute();
 
-        $sqlStone = $this->$pdo->prepare("UPDATE users SET stone = stone+(SELECT stone_reward FROM tasks WHERE task_id = ?) WHERE user_id = ?")
+        $sqlStone = $this->$pdo->prepare("UPDATE users,(SELECT stone_reward FROM tasks WHERE id = ?) a SET stone = stone + a.stone_reward WHERE users.id = ?")
         $sqlStone->bindValue(1, $task_id, PDO::PARAM_INT);
         $sqlStone->bindValue(2, $user_id, PDO::PARAM_INT);
         $sqlStone->execute();
